@@ -1,0 +1,24 @@
+# Tên của luồng công việc
+name: Kiem Tra Code Tu Dong
+
+# Luồng này sẽ chạy mỗi khi bạn "push" code lên nhánh main
+on:
+  push:
+    branches: [ "main" ]
+
+# Các bước mà Robot của GitHub sẽ thực hiện
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest # Robot dùng hệ điều hành Ubuntu
+
+    steps:
+      - name: Lay code tu Github ve
+        uses: actions/checkout@v4
+
+      - name: Cai dat Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Chay file code de kiem tra
+        run: python hello.py
