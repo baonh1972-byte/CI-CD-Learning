@@ -1,0 +1,6 @@
+print("Greeting from Uchiha Is First")
+print("Hello, Uchia Is First!" )
+print("Welcome to the world of Python programming.") 
+print("Let's learn and have fun together!" )
+print("Happy coding!" )
+print("Best regards, Uchiha Is First.")
