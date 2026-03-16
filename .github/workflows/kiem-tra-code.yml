@@ -20,5 +20,9 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Chay file code de kiem tra
-        run: python my_greeting.py
+      - name: Chay tat ca cac file Python co trong thu muc
+        run: |
+          for file in *.py; do
+            echo "Dang kiem tra file: $file"
+            python "$file"
+          done
