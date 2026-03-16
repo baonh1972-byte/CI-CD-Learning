@@ -21,4 +21,4 @@ jobs:
           python-version: '3.9'
 
       - name: Chay file code de kiem tra
-        run: python hello.py
+        run: my_greeting.py
