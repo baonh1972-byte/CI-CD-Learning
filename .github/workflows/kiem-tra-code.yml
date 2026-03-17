@@ -1,15 +1,15 @@
 # Tên của luồng công việc
 name: Kiem Tra Code Tu Dong
 
-# Luồng này sẽ chạy mỗi khi bạn "push" code lên nhánh main
+# Luồng này sẽ chạy mỗi khi bạn push code lên nhánh main
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 # Các bước mà Robot của GitHub sẽ thực hiện
 jobs:
   kiem-tra:
-    runs-on: ubuntu-latest # Robot dùng hệ điều hành Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - name: Lay code tu Github ve
@@ -18,7 +18,18 @@ jobs:
       - name: Cai dat Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
+
+      - name: Cai dat thu vien kiem tra loi (Flake8)
+        run: pip install flake8
+
+      - name: Quet loi cu phap (Linting)
+        run: |
+          # Dừng lại nếu có lỗi cú pháp hoặc lỗi logic nghiêm trọng
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+          # Cảnh báo các lỗi trình bày nhưng không làm dừng Pipeline
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Chay tat ca cac file Python co trong thu muc
         run: |
@@ -26,3 +37,5 @@ jobs:
             echo "Dang kiem tra file: $file"
             python "$file"
           done
+      - name: Chay Unit Test
+        run: python -m unittest discover tests/
