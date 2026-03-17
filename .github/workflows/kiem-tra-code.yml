@@ -38,4 +38,4 @@ jobs:
             python "$file"
           done
       - name: Chay Unit Test
-        run: python -m unittest discover tests
+        run: python -m unittest discover test
