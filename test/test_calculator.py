@@ -1,5 +1,5 @@
 import unittest
-from caculator import add
+from caclulator import add
 
 class TestMyCode(unittest.TestCase):
     def test_add_function(self):
