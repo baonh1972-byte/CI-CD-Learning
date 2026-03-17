@@ -39,3 +39,5 @@ jobs:
           done
       - name: Chay Unit Test
         run: python -m unittest discover test
+      - name: Build Docker Image
+        run: docker build -t ung-dung-cua-bao:v1 .
